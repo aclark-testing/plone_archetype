@@ -1,13 +1,18 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
     xmlns:gs="http://namespaces.zope.org/genericsetup"
     >
+
+
 
     <gs:registerProfile
         name="default"
         directory="profiles/default"
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
+
+    <five:registerPackage package="." initialize=".initialize" />
 
     <class class=".ExampleType">
         <require
