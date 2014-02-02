@@ -4,8 +4,6 @@
     xmlns:gs="http://namespaces.zope.org/genericsetup"
     >
 
-
-
     <gs:registerProfile
         name="default"
         directory="profiles/default"
@@ -14,9 +12,9 @@
 
     <five:registerPackage package="." initialize=".initialize" />
 
-    <class class=".ExampleType">
+    <class class=".exampletype.ExampleType">
         <require
-            interface=".IExampleType"
+            interface=".exampletype.IExampleType"
             permission="zope2.View" />
     </class>
 
