@@ -1,5 +1,10 @@
 from Products.Archetypes import atapi
+from Products.ATContentTypes.content import base
+from Products.ATContentTypes.content import schemata
 from Products.CMFCore import utils
+from zope.interface import Interface
+from zope.interface import implements
+from zope import schema
 
 
 PROJECT_NAME = 'Example type'
@@ -20,3 +25,24 @@ def initialize(context):
             permission=config.ADD_PERMISSIONS[atype.portal_type],
             extra_constructors=(constructor,),
             ).initialize(context)
+
+
+example_type_schema = atapi.Schema()
+ExampleTypeSchema = schemata.ATContentTypeSchema.copy()
+ExampleTypeSchema += example_type_schema
+
+
+class IExampleType(Interface):
+    """ 
+    """ 
+    newfield = schema.TextLine()
+
+
+class ExampleType(base.ATCTContent):
+    """
+    """
+    implements(IExampleType)
+
+
+schemata.finalizeATCTSchema(ExampleTypeSchema)
+atapi.registerType(ExampleType, 'ExampleType')
