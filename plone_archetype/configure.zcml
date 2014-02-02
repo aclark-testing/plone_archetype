@@ -9,4 +9,11 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <class class=".ExampleType">
+        <require
+            interface=".IExampleType"
+            permission="zope2.View" />
+    </class>
+
+
 </configure>
